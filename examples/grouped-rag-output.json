@@ -1,0 +1,34 @@
+[
+  {
+    "sample_id": "synthetic-1",
+    "question": "ساعت کار کتابخانه نمونه چیست؟",
+    "reference_answer": "کتابخانه خیالی از شنبه تا چهارشنبه از ساعت ۹ تا ۱۷ باز است.",
+    "generated_answer": "در این مثال ساختگی ساعت کار ۹ تا ۱۷ است.",
+    "metrics": {
+      "target_faq_id": "demo-hours"
+    },
+    "initial_sources": [
+      {
+        "rank": 1,
+        "metadata": {
+          "faq_id": "demo-loan"
+        }
+      },
+      {
+        "rank": 2,
+        "metadata": {
+          "faq_id": "demo-hours"
+        }
+      }
+    ],
+    "final_groups": [
+      {
+        "group_rank": 1,
+        "faq_ids": [
+          "demo-loan",
+          "demo-hours"
+        ]
+      }
+    ]
+  }
+]

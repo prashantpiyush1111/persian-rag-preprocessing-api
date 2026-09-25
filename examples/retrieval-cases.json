@@ -1,0 +1,24 @@
+[
+  {
+    "sample_id": "synthetic-1",
+    "query": "ساعت کار کتابخانه نمونه چیست؟",
+    "gold_faq_ids": [
+      "demo-hours"
+    ],
+    "retrieved_items": [
+      {
+        "rank": 1,
+        "faq_ids": [
+          "demo-loan"
+        ]
+      },
+      {
+        "rank": 2,
+        "faq_ids": [
+          "demo-hours"
+        ]
+      }
+    ],
+    "k": 2
+  }
+]
