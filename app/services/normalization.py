@@ -62,6 +62,9 @@ def _restore_tokens(text: str, protected: dict[str, str]) -> str:
     for marker, original in protected.items():
         flexible_marker = r"\s*".join(re.escape(char) for char in marker)
         text = re.sub(flexible_marker, lambda _: original, text, flags=re.IGNORECASE)
+        # Fallback to the literal placeholder in case the normalizer changed
+        # its internal spacing in an unexpected way.
+        text = text.replace(marker, original)
     return text
 
 
