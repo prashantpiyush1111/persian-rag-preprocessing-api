@@ -35,11 +35,11 @@ _normalizer = Normalizer()
 PROTECTED_TOKEN_RE = re.compile(
     r"""(?ix)
     (?:
-        https?://[^\\s<>\\\"'«»]+                         # URLs
-        | www\\.[^\\s<>\\\"'«»]+                        # www URLs
-        | [\\w.+-]+@[\\w.-]+\\.[a-z]{2,}                    # email addresses
-        | (?<![\\w.])\\d+(?:[.-]\\d+){2,}(?![\\w.])         # version-like numbers
-        | (?<![\\w])(?:\\+?\\d[\\d()\\s.-]{5,}\\d)(?![\\w]) # phone-like numbers
+        https?://[^\s<>"'«»]+                         # URLs
+        | www\.[^\s<>"'«»]+                           # www URLs
+        | [\w.+-]+@[\w.-]+\.[a-z]{2,}                 # email addresses
+        | (?<![\w.])\d+(?:[.-]\d+){2,}(?![\w.])      # version-like numbers
+        | (?<![\w])(?:\+?\d[\d()\s.-]{5,}\d)(?![\w]) # phone-like numbers
     )
     """
 )
@@ -60,7 +60,7 @@ def _protect_tokens(text: str) -> tuple[str, dict[str, str]]:
 def _restore_tokens(text: str, protected: dict[str, str]) -> str:
     """Restore protected values after normalization, tolerating marker spacing."""
     for marker, original in protected.items():
-        flexible_marker = r"\\s*".join(re.escape(char) for char in marker)
+        flexible_marker = r"\s*".join(re.escape(char) for char in marker)
         text = re.sub(flexible_marker, lambda _: original, text, flags=re.IGNORECASE)
     return text
 
